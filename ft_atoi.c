@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 17:04:45 by squinn            #+#    #+#             */
-/*   Updated: 2025/07/02 16:15:10 by squinn           ###   ########.fr       */
+/*   Updated: 2025/07/04 19:42:30 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,41 @@
 int	ft_atoi(const char *str)
 {
 	int	result;
+	int	sign;
 	int	i;
 
 	i = 0;
 	while (str[i] == ' ')
 		i++;
+	sign = 1;
+	if (str[i] == '+')
+		i++;
+	else if (str[i] == '-')
+	{
+		sign = -1;
+		i++;
+	}
 	result = 0;
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
-			return (result);
+			return (sign * result);
 		result = (str[i] - '0') + result * 10;
 		i++;
 	}
-	return (result);
+	return (sign * result);
 }
 
 /*
+#include <stdio.h>
 #include <assert.h>
 #include <stdlib.h>
 
 int	main(int argc, char *argv[]) {
 	if (argc != 2)
 		return (1);
+	printf("ft_atoi: %d\n", ft_atoi(argv[1]));
+	printf("atoi: %d\n", atoi(argv[1]));
 	assert(ft_atoi(argv[1]) == atoi(argv[1]));
 }
 */
