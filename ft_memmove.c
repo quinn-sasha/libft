@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 12:06:08 by squinn            #+#    #+#             */
-/*   Updated: 2025/07/02 16:28:08 by squinn           ###   ########.fr       */
+/*   Updated: 2025/07/04 15:06:00 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	unsigned char	*tmp_src;
 	size_t			i;
 
+	if (n == 0 || dest == src)
+		return (dest);
 	tmp_dest = (unsigned char *)dest;
 	tmp_src = (unsigned char *)src;
 	if (tmp_dest < tmp_src)
@@ -30,11 +32,22 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		}
 		return (dest);
 	}
-	i = n - 1;
-	while (i >= 0)
+	while (n > 0)
 	{
-		tmp_dest[i] = tmp_src[i];
-		i--;
+		n--;
+		tmp_dest[n] = tmp_src[n];
 	}
 	return (dest);
 }
+
+/*
+#include <unistd.h>
+
+int main() {
+	char src[] = "lorem ipsum dolor sit amet";
+
+	char *dest = src + 1;
+	ft_memmove(dest, "consectetur", 5);
+	write(1, dest, 22);
+}
+*/
