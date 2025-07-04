@@ -6,28 +6,38 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 19:12:22 by squinn            #+#    #+#             */
-/*   Updated: 2025/06/28 19:27:37 by squinn           ###   ########.fr       */
+/*   Updated: 2025/07/04 16:34:30 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static size_t	ft_strnlen(const char *s, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i] && i < n)
+		i++;
+	return (i);
+}
+
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
-	size_t	num_free_chars;
+	size_t	copy_len;
 	size_t	dst_len;
 
-	dst_len = ft_strlen(dst);
-	num_free_chars = dstsize - dst_len - 1;
-	if (num_free_chars < 0)
+	dst_len = ft_strnlen(dst, dstsize);
+	if (dst_len == dstsize)
 		return (dst_len + ft_strlen(src));
+	copy_len = dstsize - dst_len - 1;
 	i = 0;
-	while (i < num_free_chars && src[i])
+	while (i < copy_len && src[i])
 	{
 		dst[i + dst_len] = src[i];
 		i++;
 	}
-	dst[i] = '\0';
+	dst[i + dst_len] = '\0';
 	return (dst_len + ft_strlen(src));
 }
