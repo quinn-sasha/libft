@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 11:43:15 by squinn            #+#    #+#             */
-/*   Updated: 2025/07/02 18:34:28 by squinn           ###   ########.fr       */
+/*   Updated: 2025/07/04 20:04:23by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,29 @@ static int	is_in_set(char letter, char const *set)
 	return (0);
 }
 
-static size_t	count_letters_to_remove(char const *s, char const *set)
+static size_t	count_removed_len(char const *s, char const *set)
 {
-	size_t	result;
+	size_t	length;
 	size_t	i;
 
-	result = 0;
+	length = ft_strlen(s);
 	i = 0;
-	while (s[i])
+	while (s[i] && is_in_set(s[i], set))
 	{
-		if (is_in_set(s[i], set))
-			result++;
+		length--;
 		i++;
 	}
-	return (result);
+	if (length == 0)
+		return (length);
+	i = ft_strlen(s);
+	while (i > 0)
+	{
+		i--;
+		if (!is_in_set(s[i], set))
+			return (length);
+		length--;
+	}
+	return (length);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
@@ -49,26 +58,21 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	i;
 	size_t	j;
 
-	new_length = ft_strlen(s1) - count_letters_to_remove(s1, set);
+	new_length = count_removed_len(s1, set);
+	if (new_length == 0)
+		return ft_strdup("");
 	new_string = malloc(new_length + 1);
 	if (!new_string)
 		return (NULL);
 	i = 0;
+	while (s1[i] && is_in_set(s1[i], set))
+		i++;
 	j = 0;
-	while (s1[i])
-	{
-		if (is_in_set(s1[i], set))
-		{
-			i++;
-			continue ;
-		}
+	while (s1[i] && !is_in_set(s1[i], set))
 		new_string[j++] = s1[i++];
-	}
-	new_string[j] = '\0';
 	return (new_string);
 }
 
-/*
 #include <stdio.h>
 
 int	main(int argc, char *argv[]) {
@@ -77,4 +81,3 @@ int	main(int argc, char *argv[]) {
 	char const *set = argv[2];
 	printf("Result: %s\n", ft_strtrim(s, set));
 }
-*/
