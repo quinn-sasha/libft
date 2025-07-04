@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 19:34:38 by squinn            #+#    #+#             */
-/*   Updated: 2025/07/04 17:56:34 by squinn           ###   ########.fr       */
+/*   Updated: 2025/07/04 18:04:49 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ char	*ft_strchr(const char *s, int c)
 {
 	int	i;
 
-	if (c == '\0')
-		return ((char *)(s + ft_strlen(s)));
 	i = 0;
 	while (s[i])
 	{
@@ -25,5 +23,7 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)(s + i));
 		i++;
 	}
+	if (s[i] == (char)c)
+		return ((char *)(s + i));
 	return (NULL);
 }
