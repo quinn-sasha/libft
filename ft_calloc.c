@@ -6,34 +6,28 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 13:40:49 by squinn            #+#    #+#             */
-/*   Updated: 2025/06/30 15:15:13 by squinn           ###   ########.fr       */
+/*   Updated: 2025/07/05 13:31:19 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 void	*ft_calloc(size_t nmeb, size_t size)
 {
 	unsigned char	*tmp;
-	size_t			i;
 
-	if (nmeb <= 0 || size <= 0)
-		return (NULL);
+	if (nmeb == 0 || size == 0)
+		return (malloc(0));
 	tmp = malloc(nmeb * size);
 	if (!tmp)
 		return (NULL);
-	i = 0;
-	while (i < nmeb * size)
-	{
-		tmp[i] = 0;
-		i++;
-	}
+	ft_bzero(tmp, nmeb * size);
 	return (tmp);
 }
 
 /*
 #include <stdio.h>
+#include <assert.h>
 
 int	main(int argc, char *argv[]) {
 	(void)argc;
@@ -42,6 +36,11 @@ int	main(int argc, char *argv[]) {
 	for (size_t i = 0; i < nmeb; i++) {
 		printf("%d ", nums[i]);
 	}
+
+	if (ft_calloc(0, 0) == NULL)
+		printf("ft_calloc returned NULL\n");
+	if (calloc(0, 0) == NULL)
+		printf("alloc returned NULL\n");
 	return (0);
 }
 */
