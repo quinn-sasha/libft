@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 18:41:36 by squinn            #+#    #+#             */
-/*   Updated: 2025/07/02 18:58:48 by squinn           ###   ########.fr       */
+/*   Updated: 2025/07/05 11:56:28 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	*free_words(char **words)
 	return (NULL);
 }
 
-static int	get_delimiter_index(char const *s, char c, int start)
+static int	get_word_end(char const *s, char c, int start)
 {
 	int	i;
 
@@ -60,7 +60,7 @@ static int	get_delimiter_index(char const *s, char c, int start)
 			return (i);
 		i++;
 	}
-	return (-1);
+	return (i);
 }
 
 char	**ft_split(char const *s, char c)
@@ -72,7 +72,7 @@ char	**ft_split(char const *s, char c)
 	int		word_end;
 
 	num_words = count_words(s, c);
-	result = calloc(num_words + 1, sizeof(char *));
+	result = ft_calloc(num_words + 1, sizeof(char *));
 	if (!result)
 		return (NULL);
 	i = 0;
@@ -81,14 +81,13 @@ char	**ft_split(char const *s, char c)
 	{
 		while (s[i] == c)
 			i++;
-		word_end = get_delimiter_index(s, c, i);
+		word_end = get_word_end(s, c, i);
 		result[nword] = ft_substr(s, i, word_end - i);
 		if (!result[nword])
 			return (free_words(result));
 		i = word_end;
 		nword++;
 	}
-	result[nword] = NULL;
 	return (result);
 }
 
@@ -100,6 +99,7 @@ int	main(int argc, char *argv[])
 	char const	*s;
 	char		c;
 	char		**result;
+	char		**result2;
 
 	(void)argc;
 	s = argv[1];
@@ -108,6 +108,11 @@ int	main(int argc, char *argv[])
 	for (int i = 0; result[i]; i++)
 	{
 		printf("%s\n", result[i]);
+	}
+	result2 = ft_split("hello!", ' ');
+	for (int i = 0; result2[i]; i++)
+	{
+		printf("%s\n", result2[i]);
 	}
 }
 */
