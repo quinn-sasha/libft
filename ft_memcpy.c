@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 18:48:54 by squinn            #+#    #+#             */
-/*   Updated: 2025/07/04 13:34:01 by squinn           ###   ########.fr       */
+/*   Updated: 2025/07/05 13:37:30 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	unsigned char	*tmp_dst;
 	unsigned char	*tmp_src;
 
+	if (dst == NULL && src == NULL)
+		return (dst);
 	tmp_dst = (unsigned char *)dst;
 	tmp_src = (unsigned char *)src;
 	i = 0;
