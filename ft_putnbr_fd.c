@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 13:57:12 by squinn            #+#    #+#             */
-/*   Updated: 2025/07/07 11:27:42 by squinn           ###   ########.fr       */
+/*   Updated: 2025/07/07 16:42:10 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (n == INT_MIN)
+	if (n == -2147483648)
 	{
 		ft_putstr_fd("-2147483648", fd);
 		return ;
@@ -37,9 +37,9 @@ void	ft_putnbr_fd(int n, int fd)
 #include <stdio.h>
 
 int	main(void) {
-	ft_putnbr_fd(INT_MIN, 1);
+	ft_putnbr_fd(-2147483648, 1);
 	printf("\n");
-	ft_putnbr_fd(INT_MAX, 1);
+	ft_putnbr_fd(-2147483648, 1);
 	printf("\n");
 	ft_putnbr_fd(0, 1);
 }
