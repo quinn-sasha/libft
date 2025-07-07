@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 17:04:45 by squinn            #+#    #+#             */
-/*   Updated: 2025/07/05 11:43:56 by squinn           ###   ########.fr       */
+/*   Updated: 2025/07/07 16:28:13 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,30 +31,29 @@ int	ft_isspace(int c)
 
 int	ft_atoi(const char *str)
 {
-	int	result;
-	int	sign;
-	int	i;
+	long long int	result;
+	int				sign;
+	int				i;
 
 	i = 0;
 	while (ft_isspace(str[i]))
 		i++;
 	sign = 1;
-	if (str[i] == '+')
-		i++;
-	else if (str[i] == '-')
+	if (str[i] == '+' || str[i] == '-')
 	{
-		sign = -1;
+		if (str[i] == '-')
+			sign = -1;
 		i++;
 	}
 	result = 0;
 	while (str[i])
 	{
-		if (str[i] < '0' || str[i] > '9')
-			return (sign * result);
+		if (!ft_isdigit(str[i]))
+			return ((int)(sign * result));
 		result = (str[i] - '0') + result * 10;
 		i++;
 	}
-	return (sign * result);
+	return ((int)(sign * result));
 }
 
 /*
