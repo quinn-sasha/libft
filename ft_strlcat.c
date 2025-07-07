@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 19:12:22 by squinn            #+#    #+#             */
-/*   Updated: 2025/07/04 16:34:30 by squinn           ###   ########.fr       */
+/*   Updated: 2025/07/07 16:31:22 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static size_t	ft_strnlen(const char *s, size_t n)
 	size_t	i;
 
 	i = 0;
-	while (s[i] && i < n)
+	while (i < n && s[i])
 		i++;
 	return (i);
 }

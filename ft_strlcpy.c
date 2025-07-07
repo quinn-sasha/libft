@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 15:21:43 by squinn            #+#    #+#             */
-/*   Updated: 2025/07/04 16:48:13 by squinn           ###   ########.fr       */
+/*   Updated: 2025/07/07 16:31:48 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	if (dstsize == 0)
 		return (ft_strlen(src));
 	i = 0;
-	while (src[i] && i < dstsize - 1)
+	while (i < dstsize - 1 && src[i])
 	{
 		dst[i] = src[i];
 		i++;
