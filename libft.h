@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 13:54:19 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/14 10:33:52 by squinn           ###   ########.fr       */
+/*   Updated: 2025/09/12 15:42:00 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4096
@@ -22,6 +23,19 @@
 # define TRUE 1
 # define FALSE 0
 # define NOT_FOUND -1
+
+# define STDOUT 1
+# define MAX_ADDRESS_LENGTH 16
+# define SINGLE_PERCENT_ERROR 1
+# define LETTER 2
+# define STRING 3
+# define POINTER 4
+# define INTEGER 5
+# define UNSIGNED_INTEGER 6
+# define LOWER_HEX 7
+# define UPPER_HEX 8
+# define PERCENT 9
+# define UNKNOWN_CONVERSION_TYPE 10
 
 void	*ft_memset(void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
@@ -67,5 +81,19 @@ void	ft_putnbr_fd(int n, int fd);
 
 // get_next_line
 char	*get_next_line(int fd);
+
+// ft_printf
+int		ft_printf(const char *format, ...);
+int		ft_vprintf(const char *format, va_list args);
+int		print_by_conversion_type(int type, va_list args, char specifier);
+int		determine_conversion_type(char letter);
+int		ft_putchar(char c);
+int		print_specifier(char specifier);
+int		ft_putstr(const char *str);
+int		print_address(const void *address);
+char	*unsigned_itoa(unsigned long long num, unsigned int base);
+int		ft_putnbr(int num);
+int		print_unsigned_decimal(unsigned int n);
+int		print_hexadecimal(unsigned int n, int is_upper);
 
 #endif
