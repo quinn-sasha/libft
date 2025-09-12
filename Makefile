@@ -6,7 +6,7 @@
 #    By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/04 13:06:03 by squinn            #+#    #+#              #
-#    Updated: 2025/09/12 16:01:32 by squinn           ###   ########.fr        #
+#    Updated: 2025/09/12 17:46:00 by squinn           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,9 @@ PRINTF_SRCS = ft_printf/ft_printf.c \
 							ft_printf/print_address.c \
 							ft_printf/print_hexadecimal.c \
 							ft_printf/printf_utils.c \
-							ft_printf/unsigned_itoa.c
+							ft_printf/unsigned_itoa.c \
+							ft_printf/ft_dprintf_utils.c \
+							ft_printf/ft_dprintf.c
 
 SRCS = $(NORMAL_SRCS) $(PRINTF_SRCS)
 OBJ_DIR = obj

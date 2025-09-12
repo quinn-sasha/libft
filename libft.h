@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 13:54:19 by squinn            #+#    #+#             */
-/*   Updated: 2025/09/12 17:29:48 by squinn           ###   ########.fr       */
+/*   Updated: 2025/09/12 17:42:23 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,15 @@ char	*unsigned_itoa(unsigned long long num, unsigned int base);
 int		ft_putnbr(int num);
 int		print_unsigned_decimal(unsigned int n);
 int		print_hexadecimal(unsigned int n, int is_upper);
+// ft_dprintf_utils.c
+int		print_address_fd(int fd, const void *address);
+int		print_unsigned_decimal_fd(int fd, unsigned int n);
+int		print_hexadecimal_fd(int fd, unsigned int n, int is_upper);
+// ft_dprintf.c
+int		print_specifier_fd(int fd, char specifier);
+int		print_by_conversion_type_fd(int fd, int type, va_list args,
+			char specifier);
+int		ft_vdprintf(int fd, const char *format, va_list args);
+int		ft_dprintf(int fd, const char *format, ...);
 
 #endif
