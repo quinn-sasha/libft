@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 17:46:54 by squinn            #+#    #+#             */
-/*   Updated: 2025/09/12 17:46:55 by squinn           ###   ########.fr       */
+/*   Updated: 2025/09/12 17:57:36 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	ft_vdprintf(int fd, const char *format, va_list args)
 		type = determine_conversion_type(*format);
 		if (type == SINGLE_PERCENT_ERROR)
 			return (-1);
-		result += print_by_conversion_type(fd, args, *format);
+		result += print_by_conversion_type_fd(fd, type, args, *format);
 		format++;
 	}
 	return (result);
