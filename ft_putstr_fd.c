@@ -6,20 +6,23 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 13:45:46 by squinn            #+#    #+#             */
-/*   Updated: 2025/07/02 13:49:42 by squinn           ###   ########.fr       */
+/*   Updated: 2025/09/12 17:22:37 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_putstr_fd(const char *str, int fd)
 {
-	int	i;
+	int	num_bytes;
 
-	i = 0;
-	while (s[i])
+	if (str == NULL)
+		return (ft_putstr_fd(fd, "(null)"));
+	num_bytes = 0;
+	while (*str)
 	{
-		write(fd, s + i, 1);
-		i++;
+		num_bytes += ft_putchar_fd(fd, *str);
+		str++;
 	}
+	return (num_bytes);
 }
